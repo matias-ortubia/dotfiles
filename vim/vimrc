@@ -176,7 +176,7 @@ set mouse=a
 set splitright
 
 "Para poder pegar cosas desde el portapapeles
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 "Para "comprimir" bloques de codigo
 set foldmethod=manual
