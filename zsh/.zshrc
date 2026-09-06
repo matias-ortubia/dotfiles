@@ -92,11 +92,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -113,6 +113,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias la="ls -a"
+alias ll="ls -lh"
+alias lla="ls -lAh"
+
 eval "$(starship init zsh)"
 
 
@@ -127,7 +131,8 @@ export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export PATH="$HOME/.npm-global/bin:$PATH"
 exec 3>&2
 
-# Imprime un "Uhm, actually..." antes de cada error (me daba problemas)
+# Prints "Uhm, actually..." before every error (commented because it gave some problems)
 #exec 2> >(while IFS= read -r line; do print -u3 "Uhm, actually \U1F913\U261D: $line"; done)
 
 export PATH="$HOME/.local/bin:$PATH"
+
