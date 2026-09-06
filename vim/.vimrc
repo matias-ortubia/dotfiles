@@ -354,13 +354,13 @@ if current_theme == 'gruvbox_material'
     let g:airline_theme = 'gruvbox_material'
 endif
 
-let g:everforest_background = 'hard'
-colorscheme everforest
+"let g:everforest_background = 'hard'
+"colorscheme everforest
 
 "colorscheme rosepine
 "colorscheme spring-night
 "colorscheme deus
-"colorscheme catppuccin_mocha
+colorscheme catppuccin_mocha
 
 
 " Para pintar el numero de linea actual
