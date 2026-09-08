@@ -70,16 +70,12 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ZSH_PLUGIN_DIR="$HOME/.local/share/zsh/plugins"
 eval "$(zoxide init zsh)"
-echo 'source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh' >> ~/.zshrc
+source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
 source "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
-source `npm root -g`/zsh-history-enquirer/zsh-history-enquirer.plugin.zsh
+
+#export LS_COLORS='di=38;2;137;180;250:ln=38;2;137;220;235:ex=38;2;166;227;161:pi=38;2;249;226;175:so=38;2;203;166;247:or=38;2;243;139;168:mi=38;2;243;139;168:*.tar=38;2;243;139;168:*.tgz=38;2;243;139;168:*.gz=38;2;243;139;168:*.zip=38;2;243;139;168:*.7z=38;2;243;139;168:*.rar=38;2;243;139;168:*.jpg=38;2;245;194;231:*.jpeg=38;2;245;194;231:*.png=38;2;245;194;231:*.gif=38;2;245;194;231:*.webp=38;2;245;194;231:*.svg=38;2;245;194;231:*.mp3=38;2;137;220;235:*.wav=38;2;137;220;235:*.flac=38;2;137;220;235:*.mp4=38;2;245;194;231:*.mkv=38;2;245;194;231:*.avi=38;2;245;194;231'
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
+
+
