@@ -20,6 +20,7 @@ PACMAN_PACKAGES=(
     starship
     fastfetch
     vim
+    neovim
     gvim
     yazi
     mpd
@@ -29,6 +30,8 @@ PACMAN_PACKAGES=(
     p7zip
     zip
     ttf-jetbrains-mono-nerd
+    ttf-liberation
+    ttf-dejavu
     noto-fonts
     noto-fonts-emoji
     bat
@@ -41,7 +44,8 @@ PACMAN_PACKAGES=(
     bluez-utils
     bluetui
     rofi
-
+    vivid
+    astroterm
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
