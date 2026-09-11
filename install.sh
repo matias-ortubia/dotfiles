@@ -21,7 +21,6 @@ PACMAN_PACKAGES=(
     fastfetch
     vim
     neovim
-    gvim
     yazi
     mpd
     mpc
@@ -46,6 +45,9 @@ PACMAN_PACKAGES=(
     rofi
     vivid
     astroterm
+    zoxide
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
@@ -91,8 +93,14 @@ for pkg in "${STOW_PACKAGES[@]}"; do
     fi
 done
 
+# --------------------------------------------------------------
+# 5. Install tools for other programs
+# --------------------------------------------------------------
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # ---------------------------------------------------------------
-# 5. Change default Shell
+# 6. Change default Shell
 # ---------------------------------------------------------------
 if [ "$SHELL" != "$(command -v zsh)" ]; then
     echo "==> Changing default shell to zsh..."
