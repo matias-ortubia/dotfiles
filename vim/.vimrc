@@ -211,17 +211,13 @@ call plug#begin('~/vimfiles/plugged')
   Plug 'sainnhe/gruvbox-material'
   Plug 'sainnhe/everforest'
   Plug 'arzg/vim-colors-xcode'
-  if (!has('nvim'))
-    Plug 'rose-pine/vim'
-  endif
+  Plug 'rose-pine/vim'
   Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
   Plug 'rhysd/vim-color-spring-night', { 'as': 'spring-night' }
   Plug 'srcery-colors/srcery-vim'
   Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
   Plug 'ajmwagar/vim-deus'
-  if (!has('nvim'))
-    Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-  endif
+  Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   
   "NERDTree
   Plug 'preservim/nerdtree'
@@ -244,11 +240,7 @@ call plug#begin('~/vimfiles/plugged')
   Plug 'maxmellon/vim-jsx-pretty'
   
   " Permite hacer un seguimiento del repo en GIT
-  if has('nvim') || has('patch-8.0.902')
-	Plug 'mhinz/vim-signify'
-  else
-	Plug 'mhinz/vim-signify', { 'tag': 'legacy' }
-  endif
+  Plug 'mhinz/vim-signify', { 'tag': 'legacy' }
   
   " Para agregar comentarios fácilmente. Se puede agregar soporte para más lenguajes (ver el repo en git)
   " El comango gcc comenta una linea. gc comenta lo que está seleccionado.
@@ -311,16 +303,12 @@ call plug#begin('~/vimfiles/plugged')
   " Plug 'vimpostor/vim-tpipeline'
 
   " Debugger gráfico (Necesita VIM o NVIM compilado con Python 3.10)
-  if (!has('nvim'))
-    Plug 'puremourning/vimspector'
-  endif
+  Plug 'puremourning/vimspector'
 
 
   " LSP 
-  if !has('nvim') " Neovim tiene un lsp integrado
-      Plug 'prabirshrestha/vim-lsp'
-      Plug 'mattn/vim-lsp-settings'
-  endif
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
 
 call plug#end()
 
@@ -398,7 +386,5 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 noremap <leader>zen :Goyo<CR>
 
 "FZF
-if !has('nvim') " Con nvim uso telescope
-    noremap <leader>ff :Files<CR>
-    noremap <leader>fzf :FZF<CR>
-endif
+noremap <leader>ff :Files<CR>
+noremap <leader>fzf :FZF<CR>
