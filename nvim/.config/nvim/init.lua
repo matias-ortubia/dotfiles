@@ -1,4 +1,3 @@
--- Bootstrap de lazy.nvim (se clona solo la primera vez que abrís nvim)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -15,8 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("config.set")
 require("config.remap")
 
--- Carga todos los archivos de lua/plugins/*.lua automáticamente
 require("lazy").setup("plugins")
 
--- Aplica el colorscheme por defecto (ya con los plugins cargados)
 require("config.colors")

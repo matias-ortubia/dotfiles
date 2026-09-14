@@ -48,6 +48,7 @@ PACMAN_PACKAGES=(
     zoxide
     zsh-autosuggestions
     zsh-syntax-highlighting
+    wl-clipboard
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
