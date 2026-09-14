@@ -49,6 +49,7 @@ PACMAN_PACKAGES=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     wl-clipboard
+    tree-sitter-cli
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
