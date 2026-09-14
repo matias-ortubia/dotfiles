@@ -11,6 +11,3 @@ This installs the necessary packages, and creates the symlinks for the files usi
 ### Vim
 Since vimrc is using *junegunn's vim-plug*, use `:PlugInstall` to install the plugins.
 
-### Neovim
-For Neovim, you should also run `:PackerSync`.
-This Neovim configuration **requires** having this vimrc file too.
