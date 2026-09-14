@@ -68,6 +68,7 @@ echo "==> Installing AUR packages..."
 AUR_PACKAGES=(
     rmpc
     kwin-effect-rounded-corners-git
+    yay -S shell-color-scripts-git
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
@@ -81,6 +82,7 @@ STOW_PACKAGES=(
     kitty
     zsh
     vim
+    nvim
     gvim
     starship
     fastfetch
