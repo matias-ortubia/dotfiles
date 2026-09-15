@@ -136,6 +136,9 @@ done
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o ~/.local/bin/unimatrix
+chmod a+rx ~/.local/bin/unimatrix
+
 # ---------------------------------------------------------------
 # 6. Change default Shell
 # ---------------------------------------------------------------
