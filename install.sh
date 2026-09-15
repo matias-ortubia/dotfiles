@@ -69,6 +69,7 @@ AUR_PACKAGES=(
     rmpc
     kwin-effect-rounded-corners-git
     yay -S shell-color-scripts-git
+    anifetch-cli
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
