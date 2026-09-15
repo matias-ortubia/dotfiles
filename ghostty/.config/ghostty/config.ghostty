@@ -6,6 +6,11 @@ window-decoration = none
 
 font-family = JetBrainsMono Nerd Font
 font-size = 11
+font-thicken = true
 
 theme = evergarden-winter-red
+
+background-opacity = 0.95
+
+
 
