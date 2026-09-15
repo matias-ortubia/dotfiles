@@ -4,8 +4,14 @@ set -e  # Ends the script if a command fails
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+
+# ---------------------------------------------------------------
+# Prerequirements
+# ---------------------------------------------------------------
 echo "==> Updating..."
 sudo pacman -Syu --noconfirm
+
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 
 # ---------------------------------------------------------------
 # Packages from the official Arch repository.
@@ -23,6 +29,7 @@ PACMAN_PACKAGES=(
     fastfetch
     vim
     neovim
+    sublime-text
     yazi
     mpd
     mpc
@@ -53,6 +60,7 @@ PACMAN_PACKAGES=(
     wl-clipboard
     tree-sitter-cli
     go
+    asciiquarium
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
@@ -77,8 +85,15 @@ AUR_PACKAGES=(
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
+echo "==> Installing CLI games..."
+AUR_GAMES=(
+    bastet
+    nsnake
+)
+yay -S --needed --noconfirm "${AUR_GAMES[@]}"
+
 # ---------------------------------------------------------------
-# Standalone programs
+# 4. Standalone programs
 # ---------------------------------------------------------------
 install_go_tool() {
     local repo_url="$1"
@@ -105,8 +120,20 @@ install_go_tool() {
 echo "==> Installing standalone tools..."
 install_go_tool "https://github.com/marsboy02/bad-apple.git" "bad-apple"
 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o ~/.local/bin/unimatrix
+chmod a+rx ~/.local/bin/unimatrix
+
+# Fix bad-apple --sound option not playing on Arch
+# Tricks the script to use mvp. You can change the first line to use other tool instead
+echo -e '#!/bin/sh\nmpv --no-video "$@"' > ~/.local/bin/afplay
+chmod +x ~/.local/bin/afplay
+export PATH="$HOME/.local/bin:$PATH"
+
 # ---------------------------------------------------------------
-# 4. Creates symlinks with stow
+# 5. Creates symlinks with stow
 #    Each name has to be a real directory inside this repository.
 # ---------------------------------------------------------------
 echo "==> Creating symlinks with stow..."
@@ -129,15 +156,6 @@ for pkg in "${STOW_PACKAGES[@]}"; do
         echo "  !! directory '$pkg' not found inside the repository, skipping."
     fi
 done
-
-# --------------------------------------------------------------
-# 5. Programs that require other installation methods
-# --------------------------------------------------------------
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o ~/.local/bin/unimatrix
-chmod a+rx ~/.local/bin/unimatrix
 
 # ---------------------------------------------------------------
 # 6. Change default Shell

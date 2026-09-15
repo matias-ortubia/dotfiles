@@ -47,8 +47,8 @@ alias la="ls -a"
 alias ll="ls -lh"
 alias lla="ls -lAh"
 alias nv="nvim"
-alias astro="astroterm -c -m --constellations -s 100"
-
+alias astro="astroterm --color --metadata --constellations --speed=200 --city=Tokyo --fps=60"
+alias matrix="unimatrix --ignore-keyboard --color=white --speed=96"
 
 
 # Plugins / Tools

@@ -1,8 +1,9 @@
 
 window-width = 125
 window-height = 32
-
 window-decoration = none
+window-padding-x = 4
+window-padding-balance = true
 
 font-family = JetBrainsMono Nerd Font
 font-size = 11
