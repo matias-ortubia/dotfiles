@@ -146,6 +146,7 @@ STOW_PACKAGES=(
     gvim
     starship
     fastfetch
+    sublime
 )
 
 for pkg in "${STOW_PACKAGES[@]}"; do

@@ -1,0 +1,20 @@
+{
+    // --- Typography & Layout ---
+    "font_face": "JetBrainsMono Nerd Font",
+
+    // --- Minimalist UI Tweaks ---
+    "minimap_scroll_to_clicked_on": true,
+    "show_minimap": false,              // Hides the mini-map on the right
+    "overlay_scroll_bars": "when_moving", // Hides bulky scrollbars when static
+    "line_numbers": true,
+    "gutter": true,                     // Keeps the sidebar gutter for line numbers
+    "draw_centered": false,             // Set to true for a centered Markdown/writing experience
+
+    // --- Smooth Behavior ---
+    "scroll_past_end": true,            // Allows scrolling beyond the last line of code
+    "word_wrap": "auto",                // Wraps long text seamlessly
+    "highlight_line": true,             // Subtle highlight on the active line
+    "animation_enabled": false,         // Disables animations for maximum speed
+    "caret_style": "blink",            // Makes the cursor blink smoothly
+    "color_scheme": "Mariana.sublime-color-scheme",
+}
