@@ -52,6 +52,7 @@ PACMAN_PACKAGES=(
     zsh-syntax-highlighting
     wl-clipboard
     tree-sitter-cli
+    go
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
@@ -70,11 +71,39 @@ echo "==> Installing AUR packages..."
 AUR_PACKAGES=(
     rmpc
     kwin-effect-rounded-corners-git
-    yay -S shell-color-scripts-git
+    shell-color-scripts-git
     anifetch-cli
     peaclock
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
+
+# ---------------------------------------------------------------
+# Standalone programs
+# ---------------------------------------------------------------
+install_go_tool() {
+    local repo_url="$1"
+    local bin_name="$2"
+    local repo_name
+    repo_name=$(basename "$repo_url" .git)
+    local src_dir="$HOME/.local/src/$repo_name"
+
+    mkdir -p "$HOME/.local/src" "$HOME/.local/bin"
+
+    if [ -d "$src_dir" ]; then
+        echo "  -> $repo_name already cloned, updating..."
+        git -C "$src_dir" pull
+    else
+        echo "  -> Cloning $repo_name..."
+        git clone "$repo_url" "$src_dir"
+    fi
+
+    (cd "$src_dir" && go build -o "$bin_name")
+    cp "$src_dir/$bin_name" "$HOME/.local/bin/$bin_name"
+    echo "  -> $bin_name instalado en ~/.local/bin"
+}
+
+echo "==> Installing standalone tools..."
+install_go_tool "https://github.com/marsboy02/bad-apple.git" "bad-apple"
 
 # ---------------------------------------------------------------
 # 4. Creates symlinks with stow
@@ -102,7 +131,7 @@ for pkg in "${STOW_PACKAGES[@]}"; do
 done
 
 # --------------------------------------------------------------
-# 5. Install tools for other programs
+# 5. Programs that require other installation methods
 # --------------------------------------------------------------
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
