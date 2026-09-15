@@ -47,6 +47,7 @@ alias la="ls -a"
 alias ll="ls -lh"
 alias lla="ls -lAh"
 alias nv="nvim"
+alias astro="astroterm -c -m --constellations -s 100"
 
 
 
