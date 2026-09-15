@@ -72,6 +72,7 @@ AUR_PACKAGES=(
     kwin-effect-rounded-corners-git
     yay -S shell-color-scripts-git
     anifetch-cli
+    peaclock
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
