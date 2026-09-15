@@ -15,6 +15,7 @@ echo "==> Installing official packages..."
 PACMAN_PACKAGES=(
     stow
     git
+    less
     zsh
     kitty
     ghostty
