@@ -17,6 +17,7 @@ PACMAN_PACKAGES=(
     git
     zsh
     kitty
+    ghostty
     starship
     fastfetch
     vim
