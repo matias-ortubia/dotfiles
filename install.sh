@@ -61,6 +61,7 @@ PACMAN_PACKAGES=(
     tree-sitter-cli
     go
     asciiquarium
+    cava
 )
 sudo pacman -S --needed --noconfirm "${PACMAN_PACKAGES[@]}"
 
@@ -82,6 +83,7 @@ AUR_PACKAGES=(
     shell-color-scripts-git
     anifetch-cli
     peaclock
+    lavat
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 

@@ -49,6 +49,7 @@ alias lla="ls -lAh"
 alias nv="nvim"
 alias astro="astroterm --color --metadata --constellations --speed=200 --city=Tokyo --fps=60"
 alias matrix="unimatrix --ignore-keyboard --color=white --speed=96"
+alias lava="lavat -s 5 -c red -k magenta -r 5 -"
 
 
 # Plugins / Tools
@@ -84,3 +85,7 @@ mkcd() {
   mkdir -p "$@" && cd "$_"
 }
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
