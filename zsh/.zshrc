@@ -57,11 +57,6 @@ alias lava="lavat -s 5 -c red -k magenta -r 5 -"
 eval "$(starship init zsh)"
 
 autoload -Uz add-zsh-hook
-_run_once_fastfetch() {
- fastfetch
- add-zsh-hook -d precmd _run_once_fastfetch
-}
-add-zsh-hook precmd _run_once_fastfetch
 export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 export PATH="$HOME/.npm-global/bin:$PATH"
 exec 3>&2

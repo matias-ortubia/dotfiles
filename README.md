@@ -13,3 +13,8 @@ Since vimrc is using *junegunn's vim-plug*, use `:PlugInstall` to install the pl
 
 ### Neovim
 Use `:Lazy sync` to install/update packages
+
+
+### Recommended apps to install on your own
+Spotatui (Spotify frontend for the terminal)
+

@@ -11,7 +11,18 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "==> Updating..."
 sudo pacman -Syu --noconfirm
 
+# Installs GPG key for sublime text
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+
+# Adds the sublime-text repo to pacman
+grep -q "\[sublime-text\]" /etc/pacman.conf || echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+sudo pacman -Sy
+
+# Removes previous installation of Sublime if exists
+if pacman -Qi sublime-text-4 &>/dev/null; then
+    echo "==> Removing old AUR sublime-text-4 package (conflicts with the official repo package)..."
+    sudo pacman -R --noconfirm sublime-text-4
+fi
 
 # ---------------------------------------------------------------
 # Packages from the official Arch repository.
@@ -138,6 +149,28 @@ export PATH="$HOME/.local/bin:$PATH"
 # 5. Creates symlinks with stow
 #    Each name has to be a real directory inside this repository.
 # ---------------------------------------------------------------
+
+# Backs files up before creating the symlinks
+BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
+
+backup_conflicts() {
+    local pkg="$1"
+    (cd "$DOTFILES_DIR/$pkg" && find . -type f) | while read -r rel; do
+        rel="${rel#./}"
+        target="$HOME/$rel"
+        source_file="$DOTFILES_DIR/$pkg/$rel"
+
+        if [ -e "$target" ]; then
+            if [ "$(readlink -f "$target")" = "$(readlink -f "$source_file")" ]; then
+                continue
+            fi
+            echo "  -> backing up existing $target"
+            mkdir -p "$(dirname "$BACKUP_DIR/$rel")"
+            mv "$target" "$BACKUP_DIR/$rel"
+        fi
+    done
+}
+
 echo "==> Creating symlinks with stow..."
 cd "$DOTFILES_DIR"
 STOW_PACKAGES=(
@@ -153,6 +186,7 @@ STOW_PACKAGES=(
 
 for pkg in "${STOW_PACKAGES[@]}"; do
     if [ -d "$pkg" ]; then
+        backup_conflicts "$pkg"
         echo "  -> stow $pkg"
         stow -t "$HOME" "$pkg"
     else
