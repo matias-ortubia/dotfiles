@@ -40,6 +40,7 @@ PACMAN_PACKAGES=(
     fastfetch
     vim
     neovim
+    tmux
     sublime-text
     yazi
     mpd
@@ -136,6 +137,21 @@ install_go_tool "https://github.com/marsboy02/bad-apple.git" "bad-apple"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Evergarden theme for tmux
+echo "==> Installing Evergarden theme for tmux..."
+
+EVERGARDEN_DIR="$HOME/.tmux/plugins/evergarden-tmux"
+TMP_EVERGARDEN=$(mktemp -d)
+
+git clone --depth 1 https://github.com/everviolet/tmux.git "$TMP_EVERGARDEN"
+
+mkdir -p "$EVERGARDEN_DIR"
+rm -rf "$EVERGARDEN_DIR"/*
+cp -r "$TMP_EVERGARDEN/themes/." "$EVERGARDEN_DIR/"
+
+rm -rf "$TMP_EVERGARDEN"
+
+# Install unimatrix
 curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o ~/.local/bin/unimatrix
 chmod a+rx ~/.local/bin/unimatrix
 
