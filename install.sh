@@ -96,6 +96,7 @@ AUR_PACKAGES=(
     anifetch-cli
     peaclock
     lavat
+    nodejs-mapscii
 )
 yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"
 
